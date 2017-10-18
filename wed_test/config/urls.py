@@ -16,6 +16,17 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from post.views import post_list, post_create
+
+
+def post_detail(args):
+    pass
+
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^posts/$', post_list, name='post_list'),
+    url(r'^posts/(?P<post_id>\d+)/$', post_detail, name="post_detail"),
+    url(r'^posts_create/$', post_create, name="post_create" ),
+
 ]

@@ -1,0 +1,28 @@
+<h1>Post 목록 </h1>
+<hr>
+
+{% for post in latest_post_list %}
+<h3><a href="{% url 'post_detail' post_id=post.pk %}">{{ post.title }}</a> </h3>
+<p> {{ post.created_date }}</p>
+
+<div style="overflow:hidden;">
+{{ post.photo.url }}
+    <img src="{{ post.photo.url }}" alt="">
+    <!--<div style="-->
+<!--border: 1px solid #eeeeee;-->
+<!--height:300px; width:300px;-->
+<!--float: left;-->
+<!--background-image:url({{ post.photo.url}});-->
+<!--background-size: cover;-->
+<!--"> -->
+    <!--</div>-->
+    <p style="
+border: 1px solid gray;
+height: 300px; width: 500px;
+margin: 30px;
+float: left;
+">{{ post.content }}</p>
+</div>
+<br style="clear:both;">
+<hr>
+{% endfor %}

@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 from post.models import Post
@@ -19,16 +19,16 @@ def post_list(request):
 
 
 def post_detail(request, post_id):
+    selected_post = get_object_or_404(Post, pk=post_id)
     return render(
         request,
         "post/post_detail.html",
-        context={
-            'post': Post.objects.get(pk=post_id)
-        }
+        {'post': selected_post}
     )
 
+
 def post_create(request):
-    # return HttpResponse("It's post_create.html")
-    if request.method == 'POST':
-        request.POST.
-    return
+    return HttpResponse("It's post_create.html")
+    #     if request.method == 'POST':
+    #         request.POST.
+    #     return

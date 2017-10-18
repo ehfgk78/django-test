@@ -2,5 +2,12 @@
 <h1>{{ post.title }}</h1>
 <p>{{ post.created_date }}</p>
 <hr>
-<img src="{{ post.photo.url }}" alt="">
+<div style="
+border: 1px solid green;
+height: 500px;
+margin: 10px;
+background: url({{post.photo.url}}) no-repeat;
+background-size: contain;
+"></div>
+<h3>comment</h3>
 <p>{{ post.content }}</p>

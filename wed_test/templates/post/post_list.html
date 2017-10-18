@@ -2,24 +2,28 @@
 <hr>
 
 {% for post in latest_post_list %}
-<h3><a href="{% url 'post_detail' post_id=post.pk %}">{{ post.title }}</a> </h3>
+<h3><a href="/posts/{{post.pk}}">{{ post.title }}</a></h3>
 <p> {{ post.created_date }}</p>
-
-<div style="overflow:hidden;">
-{{ post.photo.url }}
-    <img src="{{ post.photo.url }}" alt="">
-    <!--<div style="-->
-<!--border: 1px solid #eeeeee;-->
-<!--height:300px; width:300px;-->
-<!--float: left;-->
-<!--background-image:url({{ post.photo.url}});-->
-<!--background-size: cover;-->
-<!--"> -->
-    <!--</div>-->
-    <p style="
+<div style="overflow:hidden;
+border: 1px solid green;
+">
+       <div style="
+box-sizing: border-box;
+border: 1px solid #eeeeee;
+margin: 10px;
+height:300px; width:300px;
+float: left;
+background-image:url({{ post.photo.url}});
+background-size: cover;
+background-repeat: no-repeat;
+    ">
+</div>
+<p style="
+box-sizing: border-box;
 border: 1px solid gray;
 height: 300px; width: 500px;
-margin: 30px;
+margin: 10px;
+padding: 10px;
 float: left;
 ">{{ post.content }}</p>
 </div>

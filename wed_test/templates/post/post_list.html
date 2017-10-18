@@ -4,10 +4,14 @@
 {% for post in latest_post_list %}
 <h3><a href="/posts/{{post.pk}}">{{ post.title }}</a></h3>
 <p> {{ post.created_date }}</p>
+<form action="{% url 'post_delete' post_id=post.pk %}" method="post">
+    <button type="submit">삭제하기</button>
+</form>
 <div style="overflow:hidden;
 border: 1px solid green;
 ">
-       <div style="
+    <a href="/posts/{{post.pk}}">
+        <div style="
 box-sizing: border-box;
 border: 1px solid #eeeeee;
 margin: 10px;
@@ -17,8 +21,9 @@ background-image:url({{ post.photo.url}});
 background-size: cover;
 background-repeat: no-repeat;
     ">
-</div>
-<p style="
+        </div>
+    </a>
+    <p style="
 box-sizing: border-box;
 border: 1px solid gray;
 height: 300px; width: 500px;

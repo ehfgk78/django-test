@@ -1,16 +1,17 @@
+
+
 <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <label for="title">title
-        <input type="text"
-               name="title"
-               id="title">
-    </label>
-    <label for="content">
-        <input type="text"
-               name="content"
-               value=""
-        >
+    <label for="title"> 제목
+        <input type="text" name="title" id="title" >
     </label>
 
-    <button>제출하기</button>
+    <label for="photo">사진
+        <input type="file" name="photo" id="photo">
+    </label>
+
+    <label for="content">글
+        <textarea name="content" id="content" cols="100" rows="20"></textarea>
+    </label>
+    <button>이미지 올리기 </button>
 </form>

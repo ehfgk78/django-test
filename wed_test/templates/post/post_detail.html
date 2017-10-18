@@ -1,6 +1,11 @@
 
 <h1>{{ post.title }}</h1>
 <p>{{ post.created_date }}</p>
+<form action="{% url 'post_delete' post_id=post.pk%}" method="POST">
+    {% csrf_token %}
+<button type="submit">지우기</button>
+</form>
+
 <hr>
 <div style="
 border: 1px solid green;

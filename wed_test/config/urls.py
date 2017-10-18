@@ -18,13 +18,16 @@ from django.conf.urls.static import static
 from django.contrib import admin
 
 from config import settings
-from post.views import post_list, post_create, post_detail
+from post.views import post_list, post_create, post_detail, post_delete
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^posts/$', post_list, name='post_list'),
     url(r'^posts/(?P<post_id>\d+)/$', post_detail, name="post_detail"),
-    url(r'^posts_create/$', post_create, name="post_create"),
+    url(r'^posts/create/$', post_create, name="post_create"),
+    url(r'^posts/delete/(?P<post_id>\d+)/$', post_delete,
+        name='post_delete'
+        ),
 
 ]
 

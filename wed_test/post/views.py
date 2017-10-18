@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
 from post.models import Post
@@ -28,7 +28,25 @@ def post_detail(request, post_id):
 
 
 def post_create(request):
-    return HttpResponse("It's post_create.html")
-    #     if request.method == 'POST':
-    #         request.POST.
-    #     return
+    # return HttpResponse("It's post_create.html")
+    photo = request.FILES.get('photo')
+    content = request.POST.get('content')
+    if request.method == 'POST' and photo:
+        # print(request.POST)
+        # print(request.FILES)
+        Post.objects.create(
+            photo=photo,
+            content=content
+        )
+        return redirect('post_list')
+    else:
+        return render(request, 'post/post_create.html')
+
+
+def post_delete(request, post_id):
+    # return HttpResponse("It's post_delete")
+    if request.method == 'POST':
+        post = Post.objects.get(pk=post_id)
+        post.delete()
+        return redirect('post_list')
+    return redirect('post_detail', post_id=post_id)

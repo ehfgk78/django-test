@@ -6,7 +6,10 @@ from django.db import models
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.CharField(
+        max_length=50,
+        default="무제"
+    )
     photo = models.ImageField(upload_to='post')
     content = models.TextField(
        blank=True,
